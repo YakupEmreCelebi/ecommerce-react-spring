@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 0px;
+}
+.text{
+    font-family: var(--font-family);
+    justify-self: center;
+    margin: 0px;
+}
