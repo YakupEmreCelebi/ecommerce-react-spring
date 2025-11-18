@@ -9,6 +9,8 @@
   --border-color: #d1d5db;
 }
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0px;
   padding: 0px;
 }
