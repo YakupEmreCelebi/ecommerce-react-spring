@@ -11,6 +11,7 @@ function Footer() {
             <div className={styles.container}>
                 <span>Built with</span>
                 <FontAwesomeIcon icon={faHeart} className={styles.icon}/>
+                <span>by</span>
                 <a href="">Celebi</a>
             </div>
         </footer>

@@ -8,6 +8,6 @@
 }
 .text{
     font-family: var(--font-family);
-    justify-self: center;
+    text-align: center;
     margin: 0px;
 }

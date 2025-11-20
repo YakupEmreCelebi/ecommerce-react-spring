@@ -1,0 +1,10 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 30px;
+    margin-inline: 10px;
+    border: 1px, solid rgb(238, 238, 238);
+    border-radius: 10px;
+    margin-block: 30px;
+}

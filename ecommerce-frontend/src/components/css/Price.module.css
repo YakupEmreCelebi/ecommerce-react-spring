@@ -1,0 +1,17 @@
+.container{
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    padding-inline: 10px;
+    padding-block: 5px;
+    align-self: flex-start;
+    margin: 10px;
+    
+}
+.text{
+    color: white;
+    font-family: var(--font-family);
+    font-weight: 100;
+    font-size: 18px;
+    margin: 0px;
+}
