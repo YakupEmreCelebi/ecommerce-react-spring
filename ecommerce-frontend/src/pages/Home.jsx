@@ -3,46 +3,10 @@ import styles from './css/Home.module.css';
 import PageHeading from '../components/PageHeading';
 import ProductListing from '../components/ProductListing';
 
+import products from '../data/products';
+
 function Home() {
 
-    const productsData = [
-        {
-            name: "Product1",
-            price: 10,
-        },
-        {
-            name: "Product2",
-            price: 10,
-        },
-        {
-            name: "Product3",
-            price: 10,
-        },
-        {
-            name: "Product4",
-            price: 10,
-        },
-        {
-            name: "Product5",
-            price: 10,
-        },
-        {
-            name: "Product6",
-            price: 10,
-        },
-        {
-            name: "Product7",
-            price: 10,
-        },
-        {
-            name: "Product8",
-            price: 10,
-        },
-        {
-            name: "Product9",
-            price: 10,
-        },
-    ];
 
     return(
         <div className={styles.homeContainer}>
@@ -52,7 +16,7 @@ function Home() {
                 Quality you can trust — all in one place.
             </PageHeading>
 
-            <ProductListing products={productsData}></ProductListing>
+            <ProductListing products={products}></ProductListing>
         </div>
     );
 }
