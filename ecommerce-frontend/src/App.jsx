@@ -6,12 +6,18 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 
+import { Outlet } from 'react-router-dom';
+
 function App() {
 
   return (
     <>
       <Header/>
-      <Home/>
+
+      <div className='min-h-[85vh]'>
+        <Outlet/>
+      </div>
+      
       <Footer/>
     </>
   );
