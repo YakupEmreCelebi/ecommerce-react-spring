@@ -1,9 +1,9 @@
 package com.example.ecommerce_backend.repository;
 
-import com.example.ecommerce_backend.entity.Product;
+import com.example.ecommerce_backend.entity.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-  }
+public interface ContactRepository extends JpaRepository<Contact, Integer> {
+}
