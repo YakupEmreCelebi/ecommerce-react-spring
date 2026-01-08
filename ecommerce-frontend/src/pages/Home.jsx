@@ -49,7 +49,6 @@ function Home() {
             ) : error ? (
                 <div style={{ height: "70vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
                     <h1 style={{ fontFamily: "var(--font-family)" }}>{error}</h1>
-                    <button onClick={fetchProducts} style={{ marginTop: 12 }}>Retry</button>
                 </div>
             ) : (
                 <ProductListing products={products} />
