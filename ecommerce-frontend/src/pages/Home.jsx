@@ -1,11 +1,23 @@
+import { useState, useEffect } from 'react';
 import styles from './css/Home.module.css';
 
 import PageHeading from '../components/PageHeading';
 import ProductListing from '../components/ProductListing';
 
-import products from '../data/products';
+import apiClient from '../api/apiClient';
 
 function Home() {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    async function fetchProducts(){
+        const response = await apiClient.get("/products"); //Axios GET request
+        setProducts(response.data);
+    }
 
 
     return(

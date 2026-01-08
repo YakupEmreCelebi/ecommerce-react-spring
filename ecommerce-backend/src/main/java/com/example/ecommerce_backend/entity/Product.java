@@ -22,13 +22,13 @@ public class Product {
     private String name;
 
     @Column(name = "DESCRIPTION", nullable = false, length = 500)
-    private String descrıptıon;
+    private String description;
 
-    @Column(name = "PRICE", nullable = false, precision = 10, scale = 2)
-    private BigDecimal prıce;
+    @Column(name = "PRICE", nullable = false, precision = 10)
+    private Double price;
 
     @Column(name = "POPULARITY", nullable = false)
-    private Integer popularıty;
+    private Integer popularity;
 
     @Column(name = "IMAGE_URL", length = 500)
     private String imageUrl;
