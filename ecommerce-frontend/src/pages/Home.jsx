@@ -9,15 +9,29 @@ import apiClient from '../api/apiClient';
 function Home() {
 
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchProducts();
     }, []);
 
     async function fetchProducts(){
-        const response = await apiClient.get("/products"); //Axios GET request
-        setProducts(response.data);
+
+        try{
+            setLoading(true);
+            const response = await apiClient.get("/products"); //Axios GET request
+            setProducts(response.data);
+        }
+        catch(error){
+            setError(error.response?.data?.message || "Failed to fetch the products");
+        }finally{
+            setLoading(false)
+        }
+        
     }
+
+    
 
 
     return(
@@ -28,7 +42,18 @@ function Home() {
                 Quality you can trust — all in one place.
             </PageHeading>
 
-            <ProductListing products={products}></ProductListing>
+            {loading ? (
+                <div style={{ height: "70vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <h1 style={{ fontFamily: "var(--font-family)" }}>Loading...</h1>
+                </div>
+            ) : error ? (
+                <div style={{ height: "70vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                    <h1 style={{ fontFamily: "var(--font-family)" }}>{error}</h1>
+                    <button onClick={fetchProducts} style={{ marginTop: 12 }}>Retry</button>
+                </div>
+            ) : (
+                <ProductListing products={products} />
+            )}
         </div>
     );
 }
