@@ -35,12 +35,6 @@
 .logo span {
     font-family: var(--font-family);
 }
-.nav a {
-    font-family: var(--font-family);
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 600;
-}
 
 a:hover {
     color: var(--hover-color);

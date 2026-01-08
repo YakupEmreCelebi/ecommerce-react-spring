@@ -1,25 +1,29 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faTags } from "@fortawesome/free-solid-svg-icons";
-import styles from './css/Header.module.css'
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
+    // text-primary ve font-display zaten index.css'deki @theme içinde tanımlı
+    const navLinkClass = "font-semibold text-primary font-display transition-all duration-300";
 
     return (
-        <header className={styles.header}>
-            <div className={styles.container}>
-                <a href="/" className={styles.logo}>
+        <header className="sticky top-0 z-20 text-[18px] bg-white">
+            <div className="flex flex-row items-center justify-between mx-auto py-5 px-[20%] border-b-2 border-[var(--border-color)] rounded-[5px] shadow-md">
+                
+                <Link to="/" className="flex gap-[10px] items-center no-underline text-[var(--primary-color)] font-bold">
                     <FontAwesomeIcon icon={faTags}/>
-                    <span>Celebi Shop</span>
-                </a>
+                    <span className="font-display">Celebi Shop</span>
+                </Link>
 
-                <nav className={styles.nav}>
-                    <a href="/home">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                    <a href="/login">Login</a>
-                    <a href="/cart">
+                <nav className="flex flex-row items-center justify-center gap-5">
+                    {/* isActive durumunda !underline kullanarak diğer tüm kuralları eziyoruz */}
+                    <NavLink to="/home" className={({isActive}) => isActive ? `underline! decoration-2 underline-offset-8 ${navLinkClass}` : `no-underline ${navLinkClass}`}>Home</NavLink>
+                    <NavLink to="/about" className={({isActive}) => isActive ? `underline! decoration-2 underline-offset-8 ${navLinkClass}` : `no-underline ${navLinkClass}`}>About</NavLink>
+                    <NavLink to="/contact" className={({isActive}) => isActive ? `underline! decoration-2 underline-offset-8 ${navLinkClass}` : `no-underline ${navLinkClass}`}>Contact</NavLink>
+                    <NavLink to="/login" className={({isActive}) => isActive ? `underline! decoration-2 underline-offset-8 ${navLinkClass}` : `no-underline ${navLinkClass}`}>Login</NavLink>
+                    <NavLink to="/cart" className={({isActive}) => isActive ? `underline! decoration-2 underline-offset-8 ${navLinkClass}` : `no-underline ${navLinkClass}`}>
                         <FontAwesomeIcon icon={faShoppingBasket}/>
-                    </a>
+                    </NavLink>
                 </nav>
             </div>
         </header>
