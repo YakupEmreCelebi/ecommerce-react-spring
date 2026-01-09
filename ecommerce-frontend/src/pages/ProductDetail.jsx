@@ -31,7 +31,7 @@ function ProductDetail() {
   async function fetchProductById() {
     try {
       setLoading(true);
-      const response = await apiClient.get(`/products?id=${params.productId}`);
+      const response = await apiClient.get(`/products/${params.productId}`);
       setProductData(response.data);
     } catch (error) {
       setError(error);

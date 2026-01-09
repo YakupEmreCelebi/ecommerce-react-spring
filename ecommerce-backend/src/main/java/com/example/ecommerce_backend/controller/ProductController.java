@@ -3,10 +3,7 @@ package com.example.ecommerce_backend.controller;
 import com.example.ecommerce_backend.dto.ProductDto;
 import com.example.ecommerce_backend.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,15 @@ public class ProductController {
     @GetMapping
     public List<ProductDto> getProducts() {
         List<ProductDto> products = productService.getProducts();
+        System.out.println("Test now 2");
         return products;
+    }
+
+    @GetMapping("/{id}")
+    public ProductDto getProductById(@PathVariable Long id) {
+        ProductDto productDto = productService.getProductById(id);
+        System.out.println(productDto);
+        return productDto;
     }
 
 

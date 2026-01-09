@@ -35,6 +35,13 @@ public class ProductServiceImp implements IProductService {
 //        return productDtos;
     }
 
+    @Override
+    public ProductDto getProductById(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+        ProductDto productDto = transformToDto(product);
+        return productDto;
+    }
+
     private ProductDto transformToDto(Product product) {
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product, productDto);
