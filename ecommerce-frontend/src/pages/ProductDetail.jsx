@@ -16,6 +16,30 @@ function ProductDetail() {
   const [isHovering, setIsHovering] = useState(false);
   const [backgroundPosition, setBackgroundPosition] = useState("center");
   const imageDivRef = useRef(null);
+  const[productData, setProductData] = useState(product);
+
+  const [loading, setLoading] = useState(!product);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if(!product)
+    {
+      fetchProductById();
+    }
+  }, [params.productId, product])
+
+  async function fetchProductById() {
+    try {
+      setLoading(true);
+      const response = await apiClient.get(`/products?id=${params.productId}`);
+      setProductData(response.data);
+    } catch (error) {
+      setError(error);
+    } finally{
+      setLoading(false);
+    }
+    
+  }
 
   function onMouseEnter(){
     setIsHovering(true);
@@ -31,6 +55,21 @@ function ProductDetail() {
     setBackgroundPosition(`${x}% ${y}%`);
   }
 
+  if(error){
+    return(
+      <div className='flex justify-center items-center font-display font-bold text-[40px]'>
+        Something Went Wrong
+      </div>
+    );
+  }
+
+  if (loading || !productData) {
+    return (
+      <div className="flex justify-center items-center min-h-[85vh] font-display font-bold text-[40px]">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center items-center min-h-[85vh]">
@@ -40,7 +79,7 @@ function ProductDetail() {
           ref={imageDivRef} 
           className="h-[45vh] w-[45vh] rounded-xl overflow-hidden bg-no-repeat bg-center"
           style={{
-            backgroundImage: `url(${product.imageUrl})`, 
+            backgroundImage: `url(${productData.imageUrl})`, 
             backgroundPosition: backgroundPosition, 
             backgroundSize: isHovering ? "170%" : 'cover'
           }}
@@ -61,14 +100,14 @@ function ProductDetail() {
             <FontAwesomeIcon icon={faArrowLeft}/>
             <span>Back to All Products</span> 
           </Link>
-          <h1 className='text-primary font-display font-bold text-3xl'>{product.name}</h1>
-          <p className='font-display text-xl font-semibold'>{product.description}</p>
-          <h2 className='text-primary font-display font-bold text-2xl'>{"$" + product.price}</h2>
+          <h1 className='text-primary font-display font-bold text-3xl'>{productData.name}</h1>
+          <p className='font-display text-xl font-semibold'>{productData.description}</p>
+          <h2 className='text-primary font-display font-bold text-2xl'>{"$" + productData.price}</h2>
 
           <div className='flex flex-row gap-1 mb-3'>
             <label htmlFor="input" className='font-display'>Qty:</label>
             <input 
-              className='border border-gray-500 rounded-sm w-15'
+              className='border border-gray-500 rounded-sm w-14'
               type="number" 
               min={1} 
               defaultValue={1} 
