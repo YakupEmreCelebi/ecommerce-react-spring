@@ -4,13 +4,11 @@ import com.example.ecommerce_backend.dto.ContactDto;
 import com.example.ecommerce_backend.service.IContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/contacts")
+@CrossOrigin(origins = "http://localhost:5173")
 @RequiredArgsConstructor
 public class ContactController {
 

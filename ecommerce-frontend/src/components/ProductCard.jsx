@@ -1,12 +1,14 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import styles from './css/ProductCard.module.css';
 
 import Price from './Price';
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({product}) {
+
   return (
-    <div className={styles.card}>
+    <Link to={`/products/${product.productId}`} state={{product}} className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
           className={styles.image}
@@ -25,7 +27,7 @@ function ProductCard({product}) {
           <Price price={product.price} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

@@ -24,15 +24,12 @@ function Home() {
             setProducts(response.data);
         }
         catch(error){
-            setError(error.response?.data?.message || "Failed to fetch the products");
+            setError(error?.response?.data?.message || "Failed to fetch the products");
         }finally{
             setLoading(false)
         }
         
     }
-
-    
-
 
     return(
         <div className={styles.homeContainer}>

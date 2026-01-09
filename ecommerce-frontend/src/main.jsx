@@ -8,16 +8,19 @@ import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Cart from './pages/Cart.jsx'
 import Login from './pages/Login.jsx';
-import ErrorPage from './pages/ErrorPage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx';
+import { contactAction } from './pages/Contact.jsx'
+import ProductDetail from './pages/ProductDetail.jsx'
  
 const routeDefinitions = createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage/>}>
     <Route index element={<Home/>}/>
     <Route path='/home' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
-    <Route path='/contact' element={<Contact/>}/>
+    <Route path='/contact' element={<Contact/>} action={contactAction}/>
     <Route path='/cart' element={<Cart/>}/>
     <Route path='/login' element={<Login/>}/>
+    <Route path='/products/:productId' element={<ProductDetail/>}/>
   </Route>
 );
 
