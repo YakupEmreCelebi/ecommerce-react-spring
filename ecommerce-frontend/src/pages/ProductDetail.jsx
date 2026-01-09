@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import apiClient from '../api/apiClient';
 import { faArrowLeft, faShoppingCart, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 function ProductDetail() {
 
@@ -21,10 +22,10 @@ function ProductDetail() {
           alt={product.name}
         />
         <div className='flex flex-col gap-1.5'>
-          <button className='font-display text-[15px]'>
+          <Link to={"/home"} className='font-display text-[15px]'>
             <FontAwesomeIcon icon={faArrowLeft}/>
             <span>Back to All Products</span> 
-          </button>
+          </Link>
           <h1 className='text-primary font-display font-bold text-3xl'>{product.name}</h1>
           <p className='font-display text-xl font-semibold'>{product.description}</p>
           <h2 className='text-primary font-display font-bold text-2xl'>{"$" + product.price}</h2>
