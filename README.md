@@ -39,9 +39,9 @@ The goal of this project is to implement industry-standard practices such as **L
 * **📦 Dynamic Product Catalog:** Fetches product data dynamically from the MySQL database via REST API.
 * **🔍 Smart Filtering & Sorting:** Real-time client-side search, category filtering, and price sorting logic.
 * **📨 Contact Management:** Asynchronous contact form that persists user inquiries directly to the database.
-* **🎨 Responsive Design:** Mobile-first user interface built with Tailwind CSS.
-* **🐳 Docker Integration:** One-command database setup using Docker Compose (No local MySQL installation required).
-* **🏗️ Robust Error Handling:** Centralized error management for API requests.
+* **🎨 Modern UI with Tailwind:** Clean and modern user interface built using **Tailwind CSS** and **CSS Modules**.
+* **🐳 Docker Integration:** One-command database setup using **Docker Compose** (No local MySQL installation required).
+* **🏗️ Layered Architecture:** Organized backend structure following the Controller-Service-Repository pattern for better maintainability.
 
 ---
 
@@ -88,7 +88,9 @@ npm run dev
 
 While the core engine (MVP) is complete, I am actively working on the following modules to reach production readiness:
 
-- [ ] **Security:** Implementing Spring Security with JWT (JSON Web Token) for stateless authentication.
-- [ ] **State Management:** Migrating the shopping cart logic to **Redux Toolkit**.
-- [ ] **Cloud Deployment:** Building a CI/CD pipeline to deploy on **AWS** (Elastic Beanstalk & RDS).
-- [ ] **Payment Integration:** Connecting **Stripe API** for secure checkout processes.
+- [ ] **Mobile Responsiveness:** Adapting the user interface to work smoothly on mobile and tablet screens.
+- [ ] **Centralized Error Handling:** Creating a unified system to manage and display clear error messages for all API requests.
+- [ ] **User Authentication:** Implementing a secure login and registration system for users.
+- [ ] **State Management:** Upgrading the shopping cart logic to a more scalable structure using Redux.
+- [ ] **Cloud Deployment:** Deploying the application to a cloud provider like AWS to make it accessible online.
+- [ ] **Payment Integration:** Adding a secure checkout process using the Stripe payment gateway.
