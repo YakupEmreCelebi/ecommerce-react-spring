@@ -5,7 +5,7 @@ function About() {
   return (
     <div className='flex flex-col min-w-[100vh]'>
       <div className='flex flex-col items-center'>
-        <PageHeading title={"About Us"}>
+        <PageHeading title={"About the Project"}>
           This project is a personal demo application developed for learning and portfolio purposes.
           <br />
           <br />
