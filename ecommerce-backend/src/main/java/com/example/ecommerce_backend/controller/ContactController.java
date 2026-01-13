@@ -3,6 +3,7 @@ package com.example.ecommerce_backend.controller;
 import com.example.ecommerce_backend.dto.ContactDto;
 import com.example.ecommerce_backend.service.IContactService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +16,9 @@ public class ContactController {
     private final IContactService contactService;
 
     @PostMapping
-    public ResponseEntity<ContactDto> create(@RequestBody ContactDto contactDto) {
-        boolean isSaved = contactService.saveContact(contactDto);
-        return isSaved ? ResponseEntity.ok().body(contactDto) : ResponseEntity.badRequest().build();
+    public ResponseEntity<String> create(@RequestBody ContactDto contactDto) {
+
+        contactService.saveContact(contactDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Request processed successfully");
     }
 }

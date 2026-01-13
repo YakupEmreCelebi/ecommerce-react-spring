@@ -18,13 +18,9 @@ public class ContactServiceImp implements IContactService {
     @Override
     public boolean saveContact(ContactDto contactDto) {
 
-        try{
-            Contact contact = dtoToEntity(contactDto);
-            contactRepository.save(contact);
-            return true;
-        }catch (Exception e){
-            return false;
-        }
+        Contact contact = dtoToEntity(contactDto);
+        contactRepository.save(contact);
+        return true;
     }
 
     private Contact dtoToEntity(ContactDto contactDto) {
@@ -32,6 +28,8 @@ public class ContactServiceImp implements IContactService {
         BeanUtils.copyProperties(contactDto, contact);
         contact.setCreatedAt(Instant.now());
         contact.setCreatedBy(contactDto.getName());
+
+
         return contact;
     }
 }
