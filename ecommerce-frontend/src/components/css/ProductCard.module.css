@@ -1,7 +1,7 @@
 .card {
   width: 100%;        /* 180px KALDIR */
   max-width: 180px; 
-  height: 270px;
+  height: 282px;
 
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 /* IMAGE CONTAINER */
 .imageWrapper {
   width: 100%;
-  height: 150px; /* üst alan */
+  height: 144px; /* üst alan */
   overflow: hidden;
 }
 

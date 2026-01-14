@@ -25,7 +25,7 @@ function ProductListing({ products }) {
     });
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
+    <div className="w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
 
       {/* Search + Sort */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pt-8 sm:pt-12 w-full">
@@ -56,13 +56,18 @@ function ProductListing({ products }) {
           <h1 className="font-display text-lg">No products found</h1>
         </div>
       ) : (
-        <div className="
-          mt-6
-          grid
-          grid-cols-2 sm:grid-cols-3 md:grid-cols-4
-          gap-x-2 gap-y-4
-          w-fit mx-auto
-        ">
+        <div
+          className="
+            mt-6 grid
+            grid-cols-2
+            sm:grid-cols-3
+            md:grid-cols-3
+            lg:grid-cols-4
+            gap-x-4 gap-y-4
+            justify-items-start
+          "
+        >
+
 
 
 
