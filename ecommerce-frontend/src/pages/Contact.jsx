@@ -39,7 +39,7 @@ export default function Contact() {
   const textFieldStyle =
     "w-full px-4 py-2 text-base border rounded-md transition border-primary dark:border-light focus:ring focus:ring-dark dark:focus:ring-lighter focus:outline-none text-gray-800 dark:text-lighter bg-white dark:bg-gray-600 placeholder-gray-400 dark:placeholder-gray-300";
   return (
-    <div className="max-w-[1152px] min-h-[852px] mx-auto px-6 py-8 font-display bg-normalbg dark:bg-darkbg">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-display bg-normalbg dark:bg-darkbg">
       <div className="text-center">
         <PageTitle title="Contact Us" />
       </div>

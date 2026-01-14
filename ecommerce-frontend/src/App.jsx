@@ -11,16 +11,18 @@ import { Outlet } from 'react-router-dom';
 function App() {
 
   return (
-    <>
-      <Header/>
+    <div className="min-h-screen flex flex-col pb-1">
+      <Header />
 
-      <div className='min-h-[85vh]'>
-        <Outlet/>
-      </div>
-      
-      <Footer/>
-    </>
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </div>
   );
+
+
 }
 
 export default App

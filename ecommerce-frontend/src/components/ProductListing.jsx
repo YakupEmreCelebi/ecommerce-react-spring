@@ -1,30 +1,17 @@
-import React from 'react';
-import { useState } from 'react';
-import styles from './css/ProductListing.module.css';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import SearchBox from './SearchBox';
 import Dropdown from './Dropdown';
 
-
 function ProductListing({ products }) {
-
   const [searchText, setSearchText] = useState("");
   const [dropdownOption, setDropdownOption] = useState("Popularity");
 
-  function handleSearchChange(inputText){
-    setSearchText(inputText);
-  }
-
-  function handleDropdownOptionChange(inputOption){
-    setDropdownOption(inputOption);
-  }
-
-  let filteredAndSortedProducts = Array.isArray(products) ? products.filter((product, index) => {
-    return(product.name.toLowerCase().includes(searchText.toLowerCase()) || 
-    product.description.toLowerCase().includes(searchText.toLowerCase()));
-  }): []
-
-  filteredAndSortedProducts = filteredAndSortedProducts
+  const filteredAndSortedProducts = (Array.isArray(products) ? products : [])
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchText.toLowerCase())
+    )
     .slice()
     .sort((a, b) => {
       switch (dropdownOption) {
@@ -32,44 +19,62 @@ function ProductListing({ products }) {
           return Number(a.price) - Number(b.price);
         case "Price High to Low":
           return Number(b.price) - Number(a.price);
-        case "Popularity":
         default:
           return Number(b.popularity ?? 0) - Number(a.popularity ?? 0);
       }
-  } );
+    });
 
   return (
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
 
-    <div className='flex flex-col w-full max-w-4xl'>
-      <div className='flex flex-col sm:flex-row justify-between items-center gap-4 pt-12 w-full min-h-[72px]'>
-        <SearchBox label={"Search"} placeholder={"Search Products..."} value={searchText} handleSearch={(value) => handleSearchChange(value)}></SearchBox>
-        <Dropdown label="Sort by" options={["Popularity", "Price Low to High", "Price High to Low"]} selectedValue={dropdownOption} handleOptionChange={(value) => handleDropdownOptionChange(value)}></Dropdown>
+      {/* Search + Sort */}
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pt-8 sm:pt-12 w-full">
+
+        <div className="w-full sm:max-w-md">
+          <SearchBox
+            label="Search"
+            placeholder="Search Products..."
+            value={searchText}
+            handleSearch={setSearchText}
+          />
+        </div>
+
+        <div className="w-full sm:w-auto">
+          <Dropdown
+            label="Sort by"
+            options={["Popularity", "Price Low to High", "Price High to Low"]}
+            selectedValue={dropdownOption}
+            handleOptionChange={setDropdownOption}
+          />
+        </div>
+
       </div>
 
-      <div className={styles.container}>
-      
-        {filteredAndSortedProducts.length === 0 ? (
-          <div
-            style={{
-              height: "70vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-            }}
-          >
-            <h1 style={{ fontFamily: "var(--font-family)" }}>
-              No products found
-            </h1>
-          </div>
-        ) : (
-          filteredAndSortedProducts.map((p, index) => (
-            <ProductCard product={p} key={index} />
-          ))
-        )}
-      </div>
+      {/* Products Grid */}
+      {filteredAndSortedProducts.length === 0 ? (
+        <div className="min-h-[50vh] flex items-center justify-center">
+          <h1 className="font-display text-lg">No products found</h1>
+        </div>
+      ) : (
+        <div className="
+          mt-6
+          grid
+          grid-cols-2 sm:grid-cols-3 md:grid-cols-4
+          gap-x-2 gap-y-4
+          w-fit mx-auto
+        ">
+
+
+
+          {filteredAndSortedProducts.map((p) => (
+            <ProductCard
+              key={p.id ?? p.productId ?? p.name}
+              product={p}
+            />
+          ))}
+        </div>
+      )}
     </div>
-    
   );
 }
 
