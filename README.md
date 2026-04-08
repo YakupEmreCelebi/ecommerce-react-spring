@@ -1,5 +1,5 @@
 # 🛒 E-Commerce Full-Stack Platform
- 
+  
 > **Status:** Active Development 🚧
 >
 > A modern, scalable, and fully dockerized e-commerce application built with **Spring Boot** and **React**.
